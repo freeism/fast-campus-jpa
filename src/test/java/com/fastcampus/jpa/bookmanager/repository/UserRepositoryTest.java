@@ -1,13 +1,9 @@
 package com.fastcampus.jpa.bookmanager.repository;
 
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
-
 import com.fastcampus.jpa.bookmanager.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 
 /**
  * @author Martin
@@ -20,12 +16,11 @@ class UserRepositoryTest {
 
     @Test
     void crud() { // create, read, update, delete
-        User user = new User();
-        user.setEmail("slow");
+        userRepository.save(new User("david", "david@fastcampus.com"));
 
-        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("email", contains());
-        Example<User> example = Example.of(user, matcher);
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setEmail("martin-updated@fastcampus.com");
 
-        userRepository.findAll(example).forEach(System.out::println);
+        userRepository.save(user);
     }
 }
