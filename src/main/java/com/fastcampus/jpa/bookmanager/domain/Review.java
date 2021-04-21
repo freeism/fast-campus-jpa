@@ -12,22 +12,27 @@ import lombok.ToString;
 
 /**
  * @author Martin
- * @since 2021/03/31
+ * @since 2021/04/21
  */
 @Entity
 @NoArgsConstructor
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class UserHistory extends BaseEntity {
+public class Review extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String title;
 
-    private String email;
+    private String content;
+
+    private float score;
 
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Book book;
 }
