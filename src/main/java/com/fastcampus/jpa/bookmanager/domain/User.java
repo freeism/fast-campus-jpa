@@ -1,12 +1,12 @@
 package com.fastcampus.jpa.bookmanager.domain;
 
-import com.fastcampus.jpa.bookmanager.domain.listener.Auditable;
 import com.fastcampus.jpa.bookmanager.domain.listener.UserEntityListener;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,9 +31,9 @@ import lombok.ToString;
 @Entity
 @EntityListeners(value = { UserEntityListener.class })
 //@Table(name = "user", indexes = { @Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
-public class User extends BaseEntity implements Auditable {
+public class User extends BaseEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull

@@ -1,5 +1,6 @@
 package com.fastcampus.jpa.bookmanager.domain;
 
+import com.fastcampus.jpa.bookmanager.domain.listener.Auditable;
 import java.time.LocalDateTime;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
@@ -15,7 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 @MappedSuperclass
 @EntityListeners(value = AuditingEntityListener.class)
-public class BaseEntity {
+public class BaseEntity implements Auditable {
     @CreatedDate
     private LocalDateTime createdAt;
 
