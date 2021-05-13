@@ -12,12 +12,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Martin
  * @since 2021/03/10
  */
 @SpringBootTest
+@Transactional
 class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;

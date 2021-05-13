@@ -1,7 +1,5 @@
 package com.fastcampus.jpa.bookmanager.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.fastcampus.jpa.bookmanager.domain.Book;
 import com.fastcampus.jpa.bookmanager.domain.BookReviewInfo;
 import org.junit.jupiter.api.Test;
@@ -23,6 +21,7 @@ class BookReviewInfoRepositoryTest {
     void crudTest() {
         BookReviewInfo bookReviewInfo = new BookReviewInfo();
 //        bookReviewInfo.setBookId(1L);
+        bookReviewInfo.setBook(givenBook());
         bookReviewInfo.setAverageReviewScore(4.5f);
         bookReviewInfo.setReviewCount(2);
 
@@ -43,7 +42,7 @@ class BookReviewInfoRepositoryTest {
         System.out.println(">>> " + result);
 
         BookReviewInfo result2 = bookRepository
-            .findById(1L)
+            .findById(7L)
             .orElseThrow(RuntimeException::new)
             .getBookReviewInfo();
 
