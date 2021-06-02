@@ -29,7 +29,11 @@ public class Publisher extends BaseEntity {
 
     private String name;
 
-    @OneToMany
+    /**
+    For orphan removal: If you invoke setOrders(null), the related Order entities will be removed in db automatically.
+    For remove cascade: If you invoke setOrders(null), the related Order entities will NOT be removed in db automatically.
+    */
+    @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "publisher_id")
     @ToString.Exclude
     private List<Book> books = new ArrayList<>();
