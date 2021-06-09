@@ -3,6 +3,7 @@ package com.fastcampus.jpa.bookmanager.service;
 import com.fastcampus.jpa.bookmanager.domain.Book;
 import com.fastcampus.jpa.bookmanager.repository.AuthorRepository;
 import com.fastcampus.jpa.bookmanager.repository.BookRepository;
+import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,15 @@ public class BookService {
 //        Book book = bookRepository.findById(id).get();
 //        book.setName("바뀔까?");
 //        bookRepository.save(book);
+    }
+
+    @Transactional
+    public List<Book> getAll() {
+        List<Book> books = bookRepository.findAll();
+
+        books.forEach(System.out::println);
+
+        return books;
     }
 
 }

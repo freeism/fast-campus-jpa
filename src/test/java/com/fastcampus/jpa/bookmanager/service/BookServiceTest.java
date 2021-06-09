@@ -1,7 +1,5 @@
 package com.fastcampus.jpa.bookmanager.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.fastcampus.jpa.bookmanager.domain.Book;
 import com.fastcampus.jpa.bookmanager.repository.AuthorRepository;
 import com.fastcampus.jpa.bookmanager.repository.BookRepository;
@@ -45,5 +43,12 @@ class BookServiceTest {
 
         System.out.println(">>> " + bookRepository.findAll());
 
+    }
+
+    @Test
+    void converterErrorTest() {
+        bookService.getAll();
+
+        bookRepository.findAll().forEach(System.out::println);
     }
 }
